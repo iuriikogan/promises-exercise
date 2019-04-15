@@ -1,21 +1,30 @@
-var difference = function (b) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            console.log(c - b);
-            resolve(c - b);
-        }, 4000);
-    })
+let add = function(a, b) {
+	return new Promise(function(resolve, reject) {
+		setTimeout(function() {
+			resolve(a + b)
+		}, 2000)
+	});
 }
-difference(10).then(function (difference) {}).catch(function (error) {
-    console.log('Error', 'your code sucks');
-});
-var c;
-var sum = function sumFunc(a, b) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            console.log(a + b);
-            resolve(c = a + b);
-        }, 2000);
-    })
+
+add(1, 2).then(function(sum) {
+	console.log('sum', sum);
+})
+
+let subtract = function(a, b) {
+	return new Promise(function(resolve, reject) {
+		setTimeout(function() {
+			resolve(a - b)
+		}, 4000)
+	});
 }
-sum(5, 42).then().catch('oops');
+
+subtract(10, 5).then(function(difference) {
+	console.log('difference', difference);
+})
+
+
+add(8, 2).then(function(sum) {
+	subtract(sum, 4).then(function(final) {
+		console.log('final', final);
+	})
+})
